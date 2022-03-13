@@ -7,7 +7,7 @@ import {useAnchorWallet} from "@solana/wallet-adapter-react";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 import {GatewayProvider} from '@civic/solana-gateway-react';
 import Countdown from "react-countdown";
-import {Snackbar, Paper, LinearProgress, Chip} from "@material-ui/core";
+import {Snackbar, Paper, LinearProgress} from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import {toDate, AlertState, getAtaForMint} from './utils';
 import {MintButton} from './MintButton';
@@ -208,7 +208,6 @@ const Home = (props: HomeProps) => {
     const [isSoldOut, setIsSoldOut] = useState(false);
     const [payWithSplToken, setPayWithSplToken] = useState(false);
     const [price, setPrice] = useState(0);
-    const [priceLabel, setPriceLabel] = useState<string>("SOL");
     const [whitelistPrice, setWhitelistPrice] = useState(0);
     const [whitelistEnabled, setWhitelistEnabled] = useState(false);
     const [isBurnToken, setIsBurnToken] = useState(false);
@@ -254,7 +253,6 @@ const Home = (props: HomeProps) => {
                 setPayWithSplToken(true);
                 // Customize your SPL-TOKEN Label HERE
                 // TODO: get spl-token metadata name
-                setPriceLabel(splTokenName);
                 setPrice(cndy.state.price.toNumber() / divider);
                 setWhitelistPrice(cndy.state.price.toNumber() / divider);
             }else {
