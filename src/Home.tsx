@@ -7,7 +7,7 @@ import {useAnchorWallet} from "@solana/wallet-adapter-react";
 import {WalletMultiButton} from "@solana/wallet-adapter-react-ui";
 import {GatewayProvider} from '@civic/solana-gateway-react';
 import Countdown from "react-countdown";
-import {Snackbar, Paper, LinearProgress} from "@material-ui/core";
+import {Snackbar, Paper} from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import {toDate, AlertState, getAtaForMint} from './utils';
 import {MintButton} from './MintButton';
@@ -92,13 +92,13 @@ const MintButtonContainer = styled.div`
 
   @-webkit-keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 #ef8f6e;
+      box-shadow: 0 0 0 0 #3f7eeb;
     }
   }
 
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0 #ef8f6e;
+      box-shadow: 0 0 0 0 #3f7eeb;
     }
   }
 `;
@@ -169,24 +169,6 @@ const MainContainer = styled.div`
   text-align: center;
   justify-content: center;
   background: "blue";
-`;
-
-const BorderLinearProgress = styled(LinearProgress)`
-  margin: 20px;
-  height: 10px !important;
-  border-radius: 30px;
-  border: 2px solid white;
-  box-shadow: 5px 5px 40px 5px rgba(0,0,0,0.5);
-  background-color:var(--main-text-color) !important;
-  
-  > div.MuiLinearProgress-barColorPrimary{
-    background-color:var(--title-text-color) !important;
-  }
-
-  > div.MuiLinearProgress-bar1Determinate {
-    border-radius: 30px !important;
-    background-image: linear-gradient(270deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.5));
-  }
 `;
 
 export interface HomeProps {
@@ -489,7 +471,9 @@ const Home = (props: HomeProps) => {
                     {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) && isBurnToken &&
                         <h3>You own {whitelistTokenBalance} WL mint {whitelistTokenBalance > 1 ? "tokens" : "token" }.</h3>}
                     {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) && !isBurnToken &&
-                        <h3>You are whitelisted and allowed to mint.</h3>}
+                        <h3>Whitelisted GOAT</h3>}
+                    {wallet && isActive && !whitelistEnabled &&
+                    <h3>0.2 SOL</h3>}
 
                     {wallet && isActive && endDate && Date.now() < endDate.getTime() &&
                         <Countdown
@@ -502,8 +486,6 @@ const Home = (props: HomeProps) => {
                         />}
                     {wallet && isActive &&
                         <h3>TOTAL MINTED : {itemsRedeemed} / {itemsAvailable}</h3>}
-                    {wallet && isActive && <BorderLinearProgress variant="determinate"
-                                                                    value={100 - (itemsRemaining * 100 / itemsAvailable)}/>}
                     <br/>
                     
                     <MintButtonContainer>
