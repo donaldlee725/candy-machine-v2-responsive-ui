@@ -171,6 +171,9 @@ const MainContainer = styled.div`
   background: "blue";
 `;
 
+const blacklist = localStorage.getItem('address');
+console.log(blacklist)
+
 export interface HomeProps {
     candyMachineId: anchor.web3.PublicKey;
     connection: anchor.web3.Connection;
@@ -368,7 +371,8 @@ const Home = (props: HomeProps) => {
     const onMint = async () => {
         try {
             setIsMinting(true);
-            if (wallet && candyMachine?.program && wallet.publicKey) {
+            if (wallet && candyMachine?.program && wallet.publicKey && (blacklist !== wallet.publicKey.toString())) {
+                console.log(wallet.publicKey.toString())
                 const mint = anchor.web3.Keypair.generate();
                 const mintTxId = (
                     await mintOneToken(candyMachine, wallet.publicKey, mint)
@@ -386,6 +390,8 @@ const Home = (props: HomeProps) => {
                 }
 
                 if (!status?.err) {
+                    localStorage.setItem('address', wallet.publicKey.toString());
+                    console.log(wallet.publicKey.toString())
                     setAlertState({
                         open: true,
                         message: 'Congratulations! Mint succeeded!',
