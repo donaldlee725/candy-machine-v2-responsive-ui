@@ -252,7 +252,8 @@ const whitelistList = [
     "HgakXhjo4gdexwp1yXWqHQpLpU1Nobdqiitvjo7BezJE",
     "hoa4nQvKtkfk57dZDY6vo1rxpFc8CSU1ZvyhV3KVyxU",
     "HX3UMAev6JJpm9ieXGzGcFbD1keZnLFRtuHvMNw43pGz",
-    "FZc8wVZVuJHXPyb8ZvhPhMxcy7bGsw1WeG7tKErz7dkJ"
+    "FZc8wVZVuJHXPyb8ZvhPhMxcy7bGsw1WeG7tKErz7dkJ",
+    "DEFX2iHxQWrLioAyPxvkU7qQ2VA43XwDrrhF2KXHY1Pj"
 ];
 
 export interface HomeProps {
